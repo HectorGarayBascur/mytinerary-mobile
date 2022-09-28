@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet , Image } from 'react-native'
+import { View, Text, FlatList, StyleSheet , Image, TextInput } from 'react-native'
 import { useGetAllCitiesQuery } from '../features/citiesAPI';
 import CitiesCards from '../components/CitiesCards';
 import React from 'react'
@@ -11,20 +11,25 @@ export default function CityScreen() {
   console.log(items)
   return (
     <View>
+
+      <TextInput  placeholder={"Enter your city..."} style={styles.input} />
       
     < FlatList
         data={items}
-        renderItem={({item})=>(
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.photo}
+        renderItem={({item})=> {
+          return (
           <CitiesCards>
-            <Text> {item?.city} </Text>
+            <Text style={styles.title}> {item?.city} </Text>
               <Image
                 source={{uri:item?.photo}}
                 style={styles.images}
             />  
              <Text> {item.description} </Text>
 
-          </CitiesCards>
-        )}
+          </CitiesCards>)
+        } }
     />
 
     </View>
@@ -37,5 +42,11 @@ const styles = StyleSheet.create({
   images: {
     width: 300,
   },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  }
  
 })

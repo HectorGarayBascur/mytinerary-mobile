@@ -5,8 +5,6 @@ import React from 'react'
 
 export default function Carousel({cities}) {
 
-
-
   return (
 
     <View>
@@ -26,7 +24,7 @@ export default function Carousel({cities}) {
                 numColumns={1}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-            keyExtractor={(city) => city.photo}
+                keyExtractor={(city) => city.photo}
                 renderItem={({item})=>{
                     return (
                         <View>
