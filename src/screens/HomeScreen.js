@@ -1,13 +1,18 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import Video from '../components/Video'
+import Carousel from "../components/Carousel"
+import { useGetAllCitiesQuery } from '../features/citiesAPI'
 
 
 export default function HomeScreen() {
+    const {data: items} = useGetAllCitiesQuery()
+
     return (
         <View>
             <Text style={styles.welcome}>Welcome to Mytineraries</Text>
             <Video />
+            <Carousel cities={items} />
         </View>
     )
 }
