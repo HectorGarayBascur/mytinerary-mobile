@@ -23,7 +23,7 @@ export default function Carousel({ cities }) {
                   style={styles.image}
                   source={{ uri: item[0] }}
                 />
-                <Text >{item[1]}</Text>
+                <Text style={styles.cityName} >{item[1]}</Text>
               </View>)
           }}
         />
@@ -34,22 +34,33 @@ export default function Carousel({ cities }) {
 
 const styles = StyleSheet.create({
   image: {
-    height: 200,
-    width: 100,
+    height: 220,
+    width: 200,
     resizeMode: 'cover',
+    alignSelf: 'center',
     borderRadius: 30,
   },
   h2: {
     fontSize: 20,
     alignSelf: 'center',
-    color: 'white'
+    color: 'white',
+    padding: 5,
+    fontWeight: 'bold'
   },
   carousel: {
-    width: '100%',
-    height: 300,
-    flex: 1,
+    width: 230,
+    justifyContent: 'center'
   },
   cities: {
     backgroundColor: '#8C4F2B'
+  },
+  cityName: {
+    alignSelf: 'center',
+    fontSize: 15,
+    marginTop: 5,
+    backgroundColor: '#73B1BF',
+    padding: 5,
+    color: 'white',
+    fontWeight: 'bold'
   }
 })
