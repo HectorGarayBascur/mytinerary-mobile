@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
         height: 50,
         paddingTop: 5,
         textAlign: 'center',
-        fontSize: 40,
+        fontSize: 38,
         color: '#fff',
-        backgroundColor: '#73B1BF'
+        backgroundColor: '#73B1BF',
+        fontWeight: 'bold'
     },
     // container: {
     //     flex: 1,
