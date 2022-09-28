@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, FlatList, Image, Dimensions, Animated, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native'
 import React from 'react'
-
 export default function Carousel({ cities }) {
   let img = cities?.map(item => ([item.photo, item.city]))
   return (
