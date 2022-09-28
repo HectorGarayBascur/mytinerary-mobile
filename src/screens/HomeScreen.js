@@ -6,7 +6,7 @@ import Video from '../components/Video'
 export default function HomeScreen() {
     return (
         <View>
-            <Text style={styles.welcome}>Welcome to Mytinerari</Text>
+            <Text style={styles.welcome}>Welcome to Mytineraries</Text>
             <Video />
         </View>
     )
