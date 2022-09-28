@@ -13,10 +13,9 @@ export default function App() {
                 source={{
                     uri: 'https://player.vimeo.com/external/535473584.sd.mp4?s=acd96c8b59825e392eb973e638bcc4f3023b76bf&profile_id=164&oauth2_token_id=57447761',
                 }}
-                useNativeControls
                 resizeMode="cover"
                 isLooping
-                autoPlay
+                shouldPlay
                 onPlaybackStatusUpdate={status => setStatus(() => status)}
             />
         </View>

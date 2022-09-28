@@ -6,7 +6,7 @@ import { useGetAllCitiesQuery } from '../features/citiesAPI'
 
 
 export default function HomeScreen() {
-    const {data: items} = useGetAllCitiesQuery()
+    const { data: items } = useGetAllCitiesQuery()
 
     return (
         <View>
