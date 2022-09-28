@@ -9,7 +9,7 @@ const DrawerNavigation = createDrawerNavigator();
 export default function Drawer() {
     return (
         <DrawerNavigation.Navigator>
-            <DrawerNavigation.Screen name='Home' component={HomeScreen}></DrawerNavigation.Screen>
+            <DrawerNavigation.Screen name='Home' component={HomeScreen} options={{ headerBackTitleVisible: false }}></DrawerNavigation.Screen>
             <DrawerNavigation.Screen name='Cities' component={CitiesScreen}></DrawerNavigation.Screen>
         </DrawerNavigation.Navigator>
     )
