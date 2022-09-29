@@ -1,16 +1,12 @@
-import { View, Text, FlatList, StyleSheet, Image, TextInput, Touchable } from 'react-native'
+import { View,   StyleSheet, Image, TextInput, Text } from 'react-native'
 import { useGetAllCitiesQuery } from '../features/citiesAPI';
 import CitiesCards from '../components/CitiesCards';
 import React from 'react'
-
-
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function CityScreen() {
 
   const { data: items } = useGetAllCitiesQuery()
-
-
   console.log("holaaa")
   console.log(items)
   return (
@@ -18,7 +14,7 @@ export default function CityScreen() {
 
       <TextInput placeholder={"Enter your city..."} style={styles.input} />
       <CitiesCards cities={items} />
-
+   
 
     </View>
   )
