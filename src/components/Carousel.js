@@ -15,7 +15,7 @@ export default function Carousel({ cities }) {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingTop: 100, paddingHorizontal: 50 }}
-          // keyExtractor={(item) => item._id}
+          keyExtractor={(item) => item._id}
           renderItem={({ item }) => {
             return (
               <View style={styles.carousel}>

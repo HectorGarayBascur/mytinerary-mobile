@@ -1,13 +1,33 @@
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, FlatList, Text, Image } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function CitiesCards(props) {
+export default function CitiesCards({ cities }) {
+  const navigation = useNavigation();
+  let img = cities?.map(item => ([item.photo, item.city, item.description, item._id]))
+  console.log(cities);
   return (
     <View style={styles.card} >
-    <View style={styles.cardContent} >
-      { props.children }
+      < FlatList
+        data={img}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item._id}
+        renderItem={({ item }) => {
+          return (
+            <TouchableOpacity onPress={() => navigation.navigate("City", item[3])}>
+              <View style={styles.cardContent} >
+                <Text style={styles.title}> {item[1]} </Text>
+                <Image
+                  source={{ uri: item[0] }}
+                  style={styles.image}
+                />
+                <Text> {item[2]} </Text>
+              </View>
+            </TouchableOpacity>)
+        }}
+      />
     </View>
-  </View>
   )
 }
 
@@ -23,7 +43,8 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderColor: 'black'
   },
   cardContent: {
     backgroundColor: '#F2F2F2',
@@ -37,5 +58,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 300
+  },
+  image: {
+    height: 220,
+    width: 200,
+    resizeMode: 'cover',
+    alignSelf: 'center',
+    borderRadius: 30,
   }
 });
