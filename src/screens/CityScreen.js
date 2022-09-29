@@ -1,14 +1,16 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import { useGetCityQuery } from '../features/citiesAPI';
+import { useNavigation } from '@react-navigation/native';
+
 import Buttom from '../components/Buttom';
 
 export default function CityScreen({ navigation, route }) {
 
-    // const { id } = route.params
-    id = '6318d4bc48ee766ac7a25734';
-    const { data: city } = useGetCityQuery(id);
+    const { data: city } = useGetCityQuery(route.params);
+    console.log("first")
+    console.log(city)
     const date = new Date(city?.response.fundation);
-
+console.log(city)
     return (
         <View>
             <View style={styles.containerMain}>

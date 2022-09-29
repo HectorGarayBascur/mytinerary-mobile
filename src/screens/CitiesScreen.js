@@ -1,12 +1,16 @@
-import { View, Text, FlatList, StyleSheet , Image, TextInput } from 'react-native'
+import { View, Text, FlatList, StyleSheet , Image, TextInput, Touchable } from 'react-native'
 import { useGetAllCitiesQuery } from '../features/citiesAPI';
 import CitiesCards from '../components/CitiesCards';
 import React from 'react'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function CityScreen() {
 
   const {data: items} = useGetAllCitiesQuery()
-  
+  const navigation = useNavigation(); 
+
   console.log("holaaa")
   console.log(items)
   return (
@@ -20,7 +24,8 @@ export default function CityScreen() {
         keyExtractor={(item) => item.photo}
         renderItem={({item})=> {
           return (
-          <CitiesCards>
+            <TouchableOpacity onPress={() => navigation.navigate("City", item?._id)}>
+          <CitiesCards key={item?._id}>
             <Text style={styles.title}> {item?.city} </Text>
               <Image
                 source={{uri:item?.photo}}
@@ -28,7 +33,8 @@ export default function CityScreen() {
             />  
              <Text> {item.description} </Text>
 
-          </CitiesCards>)
+          </CitiesCards>
+          </TouchableOpacity>)
         } }
     />
 
