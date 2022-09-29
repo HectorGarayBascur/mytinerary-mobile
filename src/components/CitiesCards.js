@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function CitiesCards({ cities }) {
   const navigation = useNavigation();
-  let img = cities?.map(item => ([item.photo, item.city, item.description, item._id]))
+  let img = cities?.map(item => ([item.photo, item.city, item.description, item._id, item.country]))
   console.log(cities);
   return (
     <View style={styles.card} >
@@ -15,22 +15,29 @@ export default function CitiesCards({ cities }) {
         keyExtractor={(item) => item._id}
         renderItem={({ item }) => {
           return (
-            <View>
-            <TouchableOpacity onPress={() => navigation.navigate("City", item[3])}>
-              <View style={styles.cardContent} >
-                <Text style={styles.title}> {item[1]} </Text>
-                <Image
-                  source={{ uri: item[0] }}
-                  style={styles.image}
-                />
-                <Text> {item[2]} </Text>
-              </View>
+            <View style={styles.container}>
+              <TouchableOpacity onPress={() => navigation.navigate("City", item[3])}>
+                <View style={styles.cardContent} >
+                  <Text style={styles.title}> {item[1]} </Text>
+                  <Image
+                    source={{ uri: item[0] }}
+                    style={styles.image}
+                  />
+                  <Text style={styles.country}> {item[4]} </Text>
+                  <View style={styles.info}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("City", item[3])} >
+                      <Text style={styles.txt}>Go to {item[1]} Details</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Itineraries", item[3])} >
+                      <Text style={styles.txt}>Go to {item[1]} Itineraries</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
               </TouchableOpacity>
-             
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Itineraries", item[3])} ><Text>Go to Itineraries</Text></TouchableOpacity>
-       
-        </View>
-            )
+
+
+            </View>
+          )
         }}
       />
     </View>
@@ -39,7 +46,6 @@ export default function CitiesCards({ cities }) {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 6,
     elevation: 3,
     shadowOffset: { width: 1, height: 1 },
     shadowColor: '#333',
@@ -63,7 +69,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 300
+    width: 300,
+    borderRadius: 20,
   },
   image: {
     height: 220,
@@ -73,6 +80,32 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   button: {
-    color:"white",
+    color: "white",
+    backgroundColor: '#73B1BF',
+    borderRadius: 20,
+    padding: 5,
+    margin: 3
+  },
+  container: {
+    alignItems: 'center'
+  },
+  txt: {
+    color: 'white'
+  },
+  country: {
+    fontSize: 20,
+    margin: 4,
+    color: '#8C4F2B',
+    fontWeight: 'bold'
+  },
+  title: {
+    fontSize: 20,
+    margin: 4,
+    color: '#73B1BF',
+    fontWeight: 'bold'
+  },
+  info: {
+    margin: 3,
+    alignItems: 'center'
   }
 });

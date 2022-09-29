@@ -1,8 +1,11 @@
-import { View, Text, StyleSheet, FlatList, Image, Dimensions, Animated, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Image, Dimensions, Animated, ScrollView, Button } from 'react-native'
 import { SafeAreaView } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
+
 export default function Carousel({ cities }) {
-  let img = cities?.map(item => ([item.photo, item.city]))
+  let img = cities?.map(item => ([item.photo, item.city, item._id]))
+  const navigation = useNavigation();
   return (
     <View>
       <View style={styles.cities}>
@@ -23,7 +26,13 @@ export default function Carousel({ cities }) {
                   style={styles.image}
                   source={{ uri: item[0] }}
                 />
-                <Text style={styles.cityName} >{item[1]}</Text>
+                <View style={styles.cityName} >
+                  <Button
+                    onPress={() => navigation.navigate("City", item[2])}
+                    title={item[1]}
+                    color="#fff"
+                  />
+                </View>
               </View>)
           }}
         />
@@ -61,6 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#73B1BF',
     padding: 5,
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    borderRadius: 20
   }
 })

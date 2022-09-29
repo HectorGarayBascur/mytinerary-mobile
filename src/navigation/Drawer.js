@@ -16,7 +16,7 @@ export default function Drawer() {
             <DrawerNavigation.Screen name='Home' component={HomeScreen} options={{ headerBackTitleVisible: false }}></DrawerNavigation.Screen>
             <DrawerNavigation.Screen name='Cities' component={CitiesScreen}></DrawerNavigation.Screen>
             <DrawerNavigation.Screen name='SignUp' component={SignUp}></DrawerNavigation.Screen>
-            <DrawerNavigation.Screen name='City' component={CityScreen}></DrawerNavigation.Screen> 
+            <DrawerNavigation.Screen name='City' component={CityScreen}></DrawerNavigation.Screen>
             <DrawerNavigation.Screen name='Sign In' component={SignInScreen}></DrawerNavigation.Screen>
             <DrawerNavigation.Screen name='Itineraries' component={Itineraries}></DrawerNavigation.Screen>
             <DrawerNavigation.Screen name='Activities' component={ActivitiesScree}></DrawerNavigation.Screen>

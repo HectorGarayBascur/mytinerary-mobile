@@ -15,6 +15,7 @@ export default function App() {
                 }}
                 resizeMode="cover"
                 isLooping
+                isMuted
                 shouldPlay
                 onPlaybackStatusUpdate={status => setStatus(() => status)}
             />
