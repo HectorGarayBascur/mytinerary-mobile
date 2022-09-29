@@ -68,6 +68,7 @@ export default function SignUp() {
                 <TextInput
                     style={styles.input}
                     placeholder='Password'
+                    secureTextEntry={true}
                     onChange={(e) => onChange(e, "password")}
                 />
                 {/* <TextInput
@@ -117,7 +118,4 @@ const styles = StyleSheet.create({
         marginVertical: 2,
         padding: 6
     },
-    // btn: {
-    //     backgroundColo,
-    // }
 })
