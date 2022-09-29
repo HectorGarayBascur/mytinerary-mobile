@@ -1,4 +1,4 @@
-import { View, StyleSheet, FlatList, Text, Image } from 'react-native'
+import { View, StyleSheet, FlatList, Text, Image, Button } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -15,6 +15,7 @@ export default function CitiesCards({ cities }) {
         keyExtractor={(item) => item._id}
         renderItem={({ item }) => {
           return (
+            <View>
             <TouchableOpacity onPress={() => navigation.navigate("City", item[3])}>
               <View style={styles.cardContent} >
                 <Text style={styles.title}> {item[1]} </Text>
@@ -24,7 +25,12 @@ export default function CitiesCards({ cities }) {
                 />
                 <Text> {item[2]} </Text>
               </View>
-            </TouchableOpacity>)
+              </TouchableOpacity>
+             
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Itineraries", item[3])} ><Text>Go to Itineraries</Text></TouchableOpacity>
+       
+        </View>
+            )
         }}
       />
     </View>
@@ -65,5 +71,8 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     alignSelf: 'center',
     borderRadius: 30,
+  },
+  button: {
+    color:"white",
   }
 });
