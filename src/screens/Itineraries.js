@@ -18,8 +18,6 @@ export default function Itineraries({ route }) {
   const itinerariesResponse = allIt?.response
   const arrayAll = itinerariesResponse?.map(item => ([item.price, item.name, item.tags, item._id]))
 
-  const {data: comments}= useGetAllCommentsQuery(arrayId)
-  console.log(comments)
 
   return (
     <View>
