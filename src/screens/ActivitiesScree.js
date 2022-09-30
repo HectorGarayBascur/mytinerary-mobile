@@ -11,7 +11,6 @@ const {data:activities} = useGetActivitiesQuery (route.params)
 const activitiesById = activities?.response
 const arrayId = activitiesById?.map(item=>([item.photo, item.name]))
 
-console.log(id)
 //All activities
  const {data: allAct} = useGetAllActivitiesQuery()
 const activitiesResponse = allAct?.response 
@@ -61,8 +60,9 @@ const styles = StyleSheet.create({
         width: 430,
         height: 50,
         paddingTop: 5,
-        textAlign: 'center',
-     fontWeight: 'bold'
+        //textAlign: 'center',
+     fontWeight: 'bold',
+     textAlign: "justify"
     },
     button: {
       backgroundColor: '#8c4f2b',
