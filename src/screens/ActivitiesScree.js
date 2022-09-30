@@ -1,13 +1,23 @@
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useGetActivitiesQuery, useGetAllActivitiesQuery} from "../features/activitiesAPI"
+import { useNavigation } from '@react-navigation/native';
+import { useState, useEffect } from 'react';
 
 export default function ActivitiesScree({route}) {
+  const navigation = useNavigation();
 
+  //Activities by Id
 const {data:activities} = useGetActivitiesQuery (route.params)
 const activitiesById = activities?.response
 const arrayId = activitiesById?.map(item=>([item.photo, item.name]))
 
+let [id, setId]= useState()
+useEffect(()=>{
+  setId()
+},[])
+console.log(id)
+//All activities
  const {data: allAct} = useGetAllActivitiesQuery()
 const activitiesResponse = allAct?.response 
 const arrayAll = activitiesResponse?.map(item=> ([item.photo, item.name]))
@@ -17,7 +27,12 @@ console.log(arrayAll)
 
   return (
     <View>
- <FlatList
+       <TouchableOpacity  onPress={() => {navigation.navigate('Cities')}} >
+              <View style={styles.button}>
+              <Text style={styles.text}>Go Back to Cities</Text>
+              </View>
+        </TouchableOpacity>
+<FlatList
             data={(arrayId?.length>0)?arrayId:arrayAll}
             renderItem={({item})=>(
                 <View>
@@ -32,7 +47,8 @@ console.log(arrayAll)
 
                 </View>
             )}
-        /> 
+/> 
+         
       
     </View>
   )
@@ -53,5 +69,13 @@ const styles = StyleSheet.create({
         textAlign: 'center',
      fontWeight: 'bold'
     },
+    button: {
+      backgroundColor: '#8c4f2b',
+      padding: 5,
+      borderRadius: 5
+    },
+    text: {
+      color: '#ffffff',
+    }
 
 })
