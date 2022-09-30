@@ -1,5 +1,4 @@
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native'
-import React, { useEffect } from 'react'
 import {useGetActivitiesQuery, useGetAllActivitiesQuery} from "../features/activitiesAPI"
 import { useNavigation } from '@react-navigation/native';
 import { useState, useEffect } from 'react';
@@ -12,10 +11,6 @@ const {data:activities} = useGetActivitiesQuery (route.params)
 const activitiesById = activities?.response
 const arrayId = activitiesById?.map(item=>([item.photo, item.name]))
 
-let [id, setId]= useState()
-useEffect(()=>{
-  setId()
-},[])
 console.log(id)
 //All activities
  const {data: allAct} = useGetAllActivitiesQuery()
