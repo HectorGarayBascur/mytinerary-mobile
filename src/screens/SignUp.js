@@ -1,41 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Button, } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useDispatch } from "react-redux";
-import { setCredentials } from "../features/authSlice";
-import { useGetNewUserMutation } from "../features/usersAPI";
 import { useState } from "react";
+import { useNavigation } from '@react-navigation/native';
 
 export default function SignUp() {
 
     const [formData, setformData] = useState(defaultformData)
-    const [newUser] = useGetNewUserMutation();
+    const navigation = useNavigation(); 
 
     const onChange = (e, type) => {
         setformData({ ...formData, [type]: e.nativeEvent.text })
     }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await newUser(formData).unwrap();
-            const user = response.response.user;
-            console.log(user)
-            // dispatch(setCredentials({ user }));
-            // setObjectValue = async (user) => {
-            //     try {
-            //       const jsonValue = JSON.stringify(user)
-            //       await AsyncStorage.setItem('user', jsonValue)
-            //     } catch(e) {
-            //       // save error
-            //     }
-
-            //     console.log('Done.')
-            //   }
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     return (
         <View style={styles.containerMain}>
@@ -71,18 +46,10 @@ export default function SignUp() {
                     secureTextEntry={true}
                     onChange={(e) => onChange(e, "password")}
                 />
-                {/* <TextInput
-                    placeholder='from'
-                    onChange={(e) => onChange(e, "from")}
-                />
-                <TextInput
-                    placeholder='role'
-                    onChange={(e) => onChange(e, "role")}
-                /> */}
                 <Button
                     style={styles.btn}
                     title='Sign Up'
-                    onPress={handleSubmit}
+                    onPress={() => navigation.navigate('Sign In')}
                 />
             </View >
         </View>
